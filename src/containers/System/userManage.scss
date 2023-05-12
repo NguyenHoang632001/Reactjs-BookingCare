@@ -1,0 +1,53 @@
+.container-manage-user{
+    margin-top:50px;
+    .title-manage-user
+    {
+        text-align: center;
+        padding:20px;
+        font-weight: 700;
+        color:rgb(232, 45, 7)
+    }
+    .container-add-new-user
+    {
+      background-color: rgba(0, 0, 255, 0.679);
+      display: inline-block;
+      margin-bottom: 20px;
+      color:white;
+      border-radius: 5px;
+      margin-left:10px;
+      border:1px solid wheat;
+      padding:8px;
+      font-size: 12px;
+      transition:all 0.1s linear;
+      &:hover{
+        transform: scale(1.2);
+        background-color: blue;
+        cursor: pointer;
+      }
+      .icon-add-new-user
+      {
+        margin-right:5px;
+      }
+    }
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  .from-ceate-new-user
+  {
+    
+  }
+
+  

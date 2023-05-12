@@ -1,0 +1,22 @@
+.section-About {
+  height: 300px;
+
+  margin-top: 50px;
+  display: flex;
+  margin: 50px 150px;
+
+  .section-video {
+    width: 50%;
+    height: 100%;
+    background-color: blue;
+    border: 1px solid red;
+    iframe {
+      width: 100%;
+      height: inherit;
+    }
+  }
+  .section-content {
+    width: 50%;
+    height: 100%;
+  }
+}

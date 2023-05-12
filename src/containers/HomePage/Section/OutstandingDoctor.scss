@@ -1,0 +1,114 @@
+.section-OutstandingDoctor {
+  height: auto;
+
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  margin: 0 150px;
+
+  position: relative;
+  margin-top: 80px;
+  //   background-color: #eee;
+
+  .title-OutstandingDoctor {
+    position: absolute;
+
+    font-size: 1.5vw;
+    font-weight: 700;
+    top: -20%;
+    left: 0;
+  }
+  .see-more {
+    position: absolute;
+
+    top: -20%;
+    right: 0;
+
+    // background-color: #eee;
+  }
+  .OutstandingDoctor-content {
+    min-height: 100%;
+    width: 100%;
+    // background-color: red($color: #000000);
+
+    .item-img {
+      min-height: 150px;
+      display: flex;
+      // background-color: black;
+      .container-item-img {
+        // border: 2px solid black;
+        border: 1px solid #eee;
+        width: 99%;
+        min-height: 100%;
+        text-align: center;
+
+        padding: 8px 0;
+
+        &:hover {
+          background-color: rgba(224, 209, 183, 0.616);
+          cursor: pointer;
+        }
+        .img {
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+          padding: 5px;
+          border-radius: 50%;
+          display: inline-block;
+          text-align: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-color: rgba(255, 0, 0, 0.107);
+        }
+      }
+
+      h3 {
+        display: block;
+        width: 100%;
+
+        padding-left: 5px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+.slick-prev {
+  z-index: 1000;
+  left: 0 !important;
+
+  transform: translate(-40%, -50%) !important;
+  ::before {
+    font-size: 20px !important;
+  }
+}
+.slick-disabled {
+  display: none !important;
+}
+.slick-prev::before {
+  font-family: 'sdfaf' !important;
+  font-size: 24px !important;
+  //   content: '\e257' !important;
+  opacity: 1 !important;
+  color: rgb(81, 221, 240) !important;
+  padding: 2px;
+}
+.slick-next::before {
+  font-family: 'sdfaf' !important;
+  font-size: 24px !important;
+  //   content: '\e257' !important;
+  color: rgb(81, 221, 240) !important;
+}
+.slick-next {
+  right: 0 !important;
+  transform: translate(50%, -50%) !important;
+
+  ::before {
+    opacity: 1 !important;
+    font-family: 'sdfaf' !important;
+    font-size: 45px !important;
+    color: rgb(81, 221, 240) !important;
+    padding: 2px;
+  }
+}

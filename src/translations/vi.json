@@ -1,0 +1,58 @@
+{
+  "home-header": {
+    "specialty": "Chuyên khoa",
+    "search-doctor": "Tìm kiếm bác sĩ",
+    "Health facility": "Cơ sở y tế",
+    "Choose hospital clinic": "Chọn bệnh viện phòng khám",
+    "Doctor": "Bác sĩ",
+    "Choose a good doctor": "Chọn bác sĩ giỏi",
+    "Medical examination package": "Gói khám",
+    "General health": "Sức khỏe tổng quát",
+    "Help": "Hỗ trợ",
+    "PLATFORM OF HEALTHCARE": "NỀN TẢNG Y TẾ",
+    "HOLISTIC HEALTHCARE": "CHĂM SÓC SỨC KHỎE TOÀN DIỆN",
+    "Find a general health check-up package": "Tìm gói khám tổng quát",
+    "Specialist examination": "Khám chuyên khoa",
+    "Remote consultation": "Khám từ xa",
+    "General health check-up": "Khám tổng quát",
+    "Medical test": "Xét nghiệm y học",
+    "Mental health": "Sức khỏe tinh thần",
+    "Dental check-up": "Khám nha khoa",
+    "Surgical package": "Gói phẫu thuật",
+    "Medical products": "Sản phẩm y tế",
+    "Full health examination": "Bài test sức khỏe",
+    "Welcome": "Xin chào! ,"
+  },
+
+  "menu": {
+    "system": {
+      "header": "Hệ thống",
+      "system-administrator": {
+        "header": "Quản trị hệ thống",
+        "user-manage": "Quản lý người sử dụng",
+        "user-redux": "Quản lí user redux",
+        "register-package-group-or-account": "Đăng ký gói dịch vụ cho nhóm/tài khoản"
+      },
+      "system-parameter": {
+        "header": "Tham số hệ thống"
+      }
+    },
+    "admin": {
+      "manage-user": "Người dùng",
+      "manage-doctor": "Quản lí bác sĩ",
+      "manage-admin": "Quản lí admin",
+      "crud": "CRUD user",
+      "crud-redux": "CRUD user redux",
+      "manage-clinic": "Quản lí phòng khám",
+      "clinic": "Phòng khám",
+      "specialty": "Chuyên khoa",
+      "manage-specialty": "Quản lí chuyên khoa",
+      "handbook": "Cẩm nang",
+      "manage-handbook": "Quản lí cẩm nang"
+    }
+  },
+  "homepage": {
+    "outStanding-doctor": "Bác sĩ nổi bật tuần qua",
+    "more": "Xem thêm..."
+  }
+}

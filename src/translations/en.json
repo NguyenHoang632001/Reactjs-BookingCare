@@ -1,0 +1,58 @@
+{
+  "home-header": {
+    "specialty": "Medical specialty",
+    "search-doctor": "Find a doctor",
+    "Health facility": "Health facility",
+    "Choose hospital clinic": "Choose hospital clinic",
+    "Doctor": "Doctor",
+    "Choose a good doctor": "Choose a good doctor",
+    "Medical examination package": "Medical examination package",
+    "General health": "General health",
+    "Help": "Help",
+    "PLATFORM OF HEALTHCARE": "PLATFORM OF HEALTHCARE",
+    "HOLISTIC HEALTHCARE": "HOLISTIC HEALTHCARE",
+    "Find a general health check-up package": "Find a general health check-up package",
+    "Specialist examination": "Specialist examination",
+    "Remote consultation": "Remote consultation",
+    "General health check-up": "General health check-up",
+    "Medical test": "Medical test",
+    "Mental health": "Mental health",
+    "Dental check-up": "Dental check-up",
+    "Surgical package": "Surgical package",
+    "Medical products": "Medical products",
+    "Full health examination": "Full health examination",
+    "Welcome": "Welcome! ,"
+  },
+
+  "menu": {
+    "system": {
+      "header": "System",
+      "system-administrator": {
+        "header": "System Administrator",
+        "user-manage": "User manage",
+        "user-redux": "Manage user using redux",
+        "register-package-group-or-account": "Register service package for group/account"
+      },
+      "system-parameter": {
+        "header": "System-parameter"
+      }
+    },
+    "admin": {
+      "manage-user": "Manage user",
+      "manage-doctor": "Manage doctor",
+      "manage-admin": "Manage admin",
+      "crud": "CRUD user",
+      "crud-redux": "CRUD user redux",
+      "manage-clinic": "Manage clinic",
+      "clinic": "Clinic",
+      "specialty": "specialty",
+      "manage-specialty": "Manage-specialty",
+      "handbook": "Handbook",
+      "manage-handbook": "Manage-handbook"
+    }
+  },
+  "homepage": {
+    "outStanding-doctor": "Last weekend's fureture doctor",
+    "more": "More..."
+  }
+}

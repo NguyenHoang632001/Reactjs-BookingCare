@@ -1,0 +1,53 @@
+.title-manage-schedule {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+.container-manage-schedule {
+  border: 1px solid #eee;
+  padding: 20px;
+  .choose-manage-schedule {
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .choose-doctor {
+      padding: 0 !important;
+    }
+    .choose-time {
+      width: 98%;
+      min-height: 50px;
+      background-color: rgba(222, 122, 122, 0.175);
+      padding: 10px;
+
+      margin: 20px auto 0;
+      text-align: center;
+      .time-button {
+        margin: 5px 5px;
+        padding: 5px 10px;
+        background-color: #eee;
+        border-radius: 5px;
+        transition: all 0.2s linear;
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.08);
+        }
+      }
+      .active {
+        background-color: aqua;
+      }
+    }
+    .submit-button {
+      margin-left: 20px;
+      margin-top: 20px;
+      background-color: rgba(0, 0, 255, 0.782);
+      color: white;
+      border-radius: 5px;
+      padding: 5px 10px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

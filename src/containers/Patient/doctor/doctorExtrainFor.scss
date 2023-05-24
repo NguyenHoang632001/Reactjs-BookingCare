@@ -1,0 +1,46 @@
+.container-doctorInfor {
+  width: 50%;
+
+  padding: 0 20px 20px 0px;
+  .titleAddressClinic {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .contentAddressClinic {
+    font-size: 14px;
+  }
+  .contentNameClinic {
+    font-size: 14px;
+  }
+  .box-price-doctor {
+    width: 100%;
+    border-top: 2px solid #eee;
+    padding-top: 5px;
+    .Watch-detail {
+      padding: 0 5px;
+      color: #45c3db;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .box-price-after-detail {
+    width: 100%;
+    // background-color: #45c3db;
+    position: relative;
+    border-top: 2px solid #eee;
+    padding-top: 5px;
+
+    .price {
+      position: absolute;
+      top: 5px;
+      right: 0;
+    }
+    .Watch-detail {
+      color: #45c3db;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

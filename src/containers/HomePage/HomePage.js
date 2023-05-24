@@ -11,7 +11,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className="container-homepage">
-        <HomeHeader />
+        <HomeHeader isShowBanner={true} />
         <Specialty />
 
         <MedicalFacility />

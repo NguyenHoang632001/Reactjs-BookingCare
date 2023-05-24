@@ -3,14 +3,41 @@ import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions';
 import Navigator from '../../components/Navigator';
-import { adminMenu } from './menuApp';
+import { adminMenu, doctorMenu } from './menuApp';
 import './Header.scss';
 import { LANGUAGES } from '../../utils';
 import { FormattedMessage } from 'react-intl';
+import _ from 'lodash';
 class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      menuApp: [],
+    };
+  }
   handleOnclickAddActive = (language) => {
     this.props.changeLanguageAppRedux(language);
   };
+  componentDidMount() {
+    let { userInfo } = this.props;
+    let menuApp = [];
+    if (userInfo && !_.isEmpty(userInfo)) {
+      let role = userInfo.roleId;
+      if (role === 'R1') {
+        menuApp = adminMenu;
+      }
+      if (role === 'R2') {
+        menuApp = doctorMenu;
+      }
+      if (role === 'R3') {
+        menuApp = '';
+      }
+    }
+    this.setState({
+      menuApp: menuApp,
+    });
+  }
   render() {
     const { processLogout, language, userInfo } = this.props;
 
@@ -18,7 +45,7 @@ class Header extends Component {
       <div className="header-container">
         {/* thanh navigator */}
         <div className="header-tabs-container">
-          <Navigator menus={adminMenu} />
+          <Navigator menus={this.state.menuApp} />
         </div>
         {/* nút logout */}
         <div className="languages">

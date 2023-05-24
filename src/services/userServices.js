@@ -34,6 +34,31 @@ const getAllcodeServices = (inputType) => {
 const getTopDoctorHomeService = (limit) => {
   return axios.get(`/api/top-doctor-home?limit=${limit}`);
 };
+const getAllDoctors = () => {
+  return axios.get(`/api/get-all-doctors`);
+};
+const saveDetailDoctor = (data) => {
+  return axios.post('/api/save-infor-doctors', data);
+};
+const getDetailDoctorService = (id) => {
+  return axios.get(`/api/get-detail-a-doctor?id=${id}`);
+};
+const bulkCreateScheduleService = (data) => {
+  return axios.post('/api/bulk-create-schedule', data);
+};
+const getScheduleByDateService = (doctorId, date) => {
+  return axios.get(
+    `/api/get-schedule-doctor-by-date?doctorId=${doctorId}&date=${date}`
+  );
+};
+const getExtraDoctorById = (doctorId) => {
+  return axios.get(`api/get-extra-infor-doctor-by-id?doctorId=${doctorId}`);
+};
+const getScheduleForUserService = (timeType, date) => {
+  return axios.get(
+    `api/get-schedule-for-user?timeType=${timeType}&date=${date}`
+  );
+};
 export {
   handleLoginUser,
   getUser,
@@ -42,4 +67,11 @@ export {
   editUser,
   getAllcodeServices,
   getTopDoctorHomeService,
+  getAllDoctors,
+  saveDetailDoctor,
+  getDetailDoctorService,
+  bulkCreateScheduleService,
+  getScheduleByDateService,
+  getExtraDoctorById,
+  getScheduleForUserService,
 };

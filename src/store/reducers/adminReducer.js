@@ -7,6 +7,12 @@ const initialState = {
   position: [],
   userRedux: [],
   topDoctors: [],
+  allDoctors: [],
+  detailDoctor: '',
+  allTimeSchedule: [],
+  priceArr: [],
+  provinceArr: [],
+  paymentArr: [],
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -94,7 +100,70 @@ const adminReducer = (state = initialState, action) => {
       return {
         ...state,
       };
-
+    case actionTypes.FETCH_ALL_DOCTOR_SUCCESS:
+      state.allDoctors = action.data;
+      console.log('action for all doctors', state);
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_ALL_DOCTOR_FAILED:
+      return {
+        ...state,
+      };
+    case actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS:
+      return {
+        ...state,
+      };
+    case actionTypes.SAVE_DETAIL_DOCTOR_FAILED:
+      return {
+        ...state,
+      };
+    //detail doctor
+    case actionTypes.FETCH_DETAIL_DOCTOR_SUCCESS:
+      state.detailDoctor = action.data;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_DETAIL_DOCTOR_FAILED:
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_TIME_SCHEDULE_SUCCESS:
+      state.allTimeSchedule = action.data;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_TIME_SCHEDULE_FAILED:
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_PRICE_SUCCESS:
+      state.priceArr = action.data;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_PRICE_FAILED:
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_PROVINCE_SUCCESS:
+      state.provinceArr = action.data;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_PROVINCE_FAILED:
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_PAYMENT_SUCCESS:
+      state.paymentArr = action.data;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_PAYMENT_FAILED:
+      return {
+        ...state,
+      };
     default:
       return state;
   }

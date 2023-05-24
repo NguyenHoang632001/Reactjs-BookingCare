@@ -5,6 +5,7 @@ import './HomeHeader.scss';
 import { LANGUAGES } from '../../utils';
 import { changeLanguageApp } from '../../store/actions';
 import Specialty from './Section/Specialty';
+import { Link } from 'react-router-dom';
 
 class HomeHeader extends Component {
   constructor(props) {
@@ -16,6 +17,9 @@ class HomeHeader extends Component {
   handleToChangLanguage = (language) => {
     this.props.changeLanguageAppRedux(language);
   };
+  handleToBackHome = () => {
+    this.props.history.push(`/`);
+  };
   render() {
     const { processLogout, language } = this.props;
     return (
@@ -24,8 +28,10 @@ class HomeHeader extends Component {
           <div className="home-header-content">
             <div className="left-content">
               <i className="fa fa-bars header-menu"></i>
-              <div className="header-logo"></div>
+
+              <Link to="/home" className="header-logo"></Link>
             </div>
+
             <div className="center-content">
               <div className="primary-content">
                 <h2 className="title-content">
@@ -87,82 +93,85 @@ class HomeHeader extends Component {
             </div>
           </div>
         </div>
-        <div className="header-home-banner">
-          <h1 className="title1">
-            <FormattedMessage id="home-header.PLATFORM OF HEALTHCARE" />
-          </h1>
-          <h2 className="title2">
-            <FormattedMessage id="home-header.HOLISTIC HEALTHCARE" />
-          </h2>
-          <div className="banner-search">
-            <div className="box-search">
-              <i className="fa fa-search search-icon"></i>
-              <input
-                className="search-input-banner"
-                placeholder={
-                  <FormattedMessage id="home-header.Find a general health check-up package" />
-                }
-              ></input>
+        {this.props.isShowBanner == true && (
+          <div className="header-home-banner">
+            <h1 className="title1">
+              <FormattedMessage id="home-header.PLATFORM OF HEALTHCARE" />
+            </h1>
+            <h2 className="title2">
+              <FormattedMessage id="home-header.HOLISTIC HEALTHCARE" />
+            </h2>
+            <div className="banner-search">
+              <div className="box-search">
+                <i className="fa fa-search search-icon"></i>
+                <input
+                  className="search-input-banner"
+                  placeholder={
+                    <FormattedMessage id="home-header.Find a general health check-up package" />
+                  }
+                ></input>
+              </div>
+            </div>
+            <div className="banner-options">
+              <div className="option-child">
+                <i className="far fa-hospital icon-child-banner"></i>
+                <span className="text-child">
+                  {' '}
+                  <FormattedMessage id="home-header.Specialist examination" />{' '}
+                </span>
+              </div>
+              <div className="option-child">
+                <i className="fas fa-mobile icon-child-banner"></i>
+                <span className="text-child">
+                  <FormattedMessage id="home-header.Remote consultation" />
+                </span>
+              </div>
+              <div className="option-child">
+                <i className="fas fa-procedures icon-child-banner"></i>
+                <span className="text-child">
+                  <FormattedMessage id="home-header.General health check-up" />
+                </span>
+              </div>
+              <div className="option-child">
+                <i className="far fa-hospital icon-child-banner"></i>
+                <span className="text-child">
+                  <FormattedMessage id="home-header.Medical test" />
+                </span>
+              </div>
+              <div className="option-child">
+                <i className="far fa-hospital icon-child-banner"></i>
+                <span className="text-child">
+                  <FormattedMessage id="home-header.Mental health" />
+                </span>
+              </div>
+              <div className="option-child">
+                <i className="far fa-hospital icon-child-banner"></i>
+                <span className="text-child">
+                  <FormattedMessage id="home-header.Dental check-up" />
+                </span>
+              </div>
+              <div className="option-child">
+                <i className="far fa-hospital icon-child-banner"></i>
+                <span className="text-child">
+                  <FormattedMessage id="home-header.Surgical package" />
+                </span>
+              </div>
+              <div className="option-child">
+                <i className="far fa-hospital icon-child-banner"></i>
+                <span className="text-child">
+                  <FormattedMessage id="home-header.Medical products" />
+                </span>
+              </div>
+              <div className="option-child">
+                <i className="far fa-hospital icon-child-banner"></i>
+                <span className="text-child">
+                  <FormattedMessage id="home-header.Full health examination" />
+                </span>
+              </div>
             </div>
           </div>
-          <div className="banner-options">
-            <div className="option-child">
-              <i className="far fa-hospital icon-child-banner"></i>
-              <span className="text-child">
-                {' '}
-                <FormattedMessage id="home-header.Specialist examination" />{' '}
-              </span>
-            </div>
-            <div className="option-child">
-              <i className="fas fa-mobile icon-child-banner"></i>
-              <span className="text-child">
-                <FormattedMessage id="home-header.Remote consultation" />
-              </span>
-            </div>
-            <div className="option-child">
-              <i className="fas fa-procedures icon-child-banner"></i>
-              <span className="text-child">
-                <FormattedMessage id="home-header.General health check-up" />
-              </span>
-            </div>
-            <div className="option-child">
-              <i className="far fa-hospital icon-child-banner"></i>
-              <span className="text-child">
-                <FormattedMessage id="home-header.Medical test" />
-              </span>
-            </div>
-            <div className="option-child">
-              <i className="far fa-hospital icon-child-banner"></i>
-              <span className="text-child">
-                <FormattedMessage id="home-header.Mental health" />
-              </span>
-            </div>
-            <div className="option-child">
-              <i className="far fa-hospital icon-child-banner"></i>
-              <span className="text-child">
-                <FormattedMessage id="home-header.Dental check-up" />
-              </span>
-            </div>
-            <div className="option-child">
-              <i className="far fa-hospital icon-child-banner"></i>
-              <span className="text-child">
-                <FormattedMessage id="home-header.Surgical package" />
-              </span>
-            </div>
-            <div className="option-child">
-              <i className="far fa-hospital icon-child-banner"></i>
-              <span className="text-child">
-                <FormattedMessage id="home-header.Medical products" />
-              </span>
-            </div>
-            <div className="option-child">
-              <i className="far fa-hospital icon-child-banner"></i>
-              <span className="text-child">
-                <FormattedMessage id="home-header.Full health examination" />
-              </span>
-            </div>
-          </div>
-        </div>
+        )}
+
         {/* <Specialty /> */}
       </div>
     );

@@ -8,6 +8,7 @@ import { LANGUAGES } from '../../../utils';
 import img1 from '../../../assets/img1.jpg';
 import * as actions from '../../../store/actions';
 import { FormattedMessage } from 'react-intl';
+import { withRouter } from 'react-router';
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -50,6 +51,7 @@ class OutstandingDoctor extends Component {
     super(props);
     this.state = {
       arrDoctor: [],
+      detailDoctor: '',
     };
   }
   handleToChangLanguage = (language) => {
@@ -73,7 +75,10 @@ class OutstandingDoctor extends Component {
   componentDidMount() {
     this.props.loadTopDoctors();
   }
-
+  handleToDetailDoctor = (id) => {
+    // this.props.getDetailDoctor(id);
+    this.props.history.push(`/detail-doctor/${id}`);
+  };
   render() {
     let settings = {
       dots: false,
@@ -85,8 +90,7 @@ class OutstandingDoctor extends Component {
       prevArrow: <SamplePrevArrow />,
     };
     let language = this.props.language;
-    console.log('user', this.props.topDoctors);
-
+    console.log('top doctr', this.props.topDoctors);
     return (
       <div className="section-OutstandingDoctor">
         <h2 className="title-OutstandingDoctor">
@@ -110,7 +114,10 @@ class OutstandingDoctor extends Component {
                 let nameVi = `${item.positionData.valueVn},${item.firstName} ${item.lastName}`;
                 let nameEn = `${item.positionData.valueEn},${item.firstName} ${item.lastName}`;
                 return (
-                  <div className="item-img">
+                  <div
+                    className="item-img"
+                    onClick={() => this.handleToDetailDoctor(item.id)}
+                  >
                     <div className="container-item-img">
                       {' '}
                       {/* <img src={imageBase64} className="img" /> */}
@@ -134,6 +141,7 @@ class OutstandingDoctor extends Component {
 const mapStateToProps = (state) => {
   return {
     topDoctors: state.admin.topDoctors,
+    detailDoctor: state.admin.detailDoctor,
     language: state.app.language,
   };
 };
@@ -141,7 +149,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     loadTopDoctors: () => dispatch(actions.fetchTopDoctors()),
+    getDetailDoctor: (id) => dispatch(actions.fetchDetailDoctor(id)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor)
+);

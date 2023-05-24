@@ -9,7 +9,7 @@ import {
   userIsAuthenticated,
   userIsNotAuthenticated,
 } from '../hoc/authentication';
-
+import DetailDoctor from '../containers/Patient/doctor/DetailDoctor';
 import { path } from '../utils';
 
 import Home from '../routes/Home';
@@ -22,6 +22,7 @@ import { CustomToastCloseButton } from '../components/CustomToast';
 import ConfirmModal from '../components/ConfirmModal';
 import HomePage from './HomePage/HomePage';
 import CustomScrollbars from '../components/CustomScrollbars';
+import ManageDoctor from './System/Doctor/ManageSchedule';
 class App extends Component {
   handlePersistorState = () => {
     const { persistor } = this.props;
@@ -55,13 +56,19 @@ class App extends Component {
                   <Route path={path.HOME} exact component={Home} />
                   <Route
                     path={path.LOGIN}
+                    i
                     component={userIsNotAuthenticated(Login)}
                   />
                   <Route
                     path={path.SYSTEM}
                     component={userIsAuthenticated(System)}
                   />
+                  <Route
+                    path="/doctor/manage-schedule"
+                    component={userIsAuthenticated(ManageDoctor)}
+                  />
                   <Route path={path.HOMEPAGE} component={HomePage} />
+                  <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
                 </Switch>
               </CustomScrollbars>
             </div>

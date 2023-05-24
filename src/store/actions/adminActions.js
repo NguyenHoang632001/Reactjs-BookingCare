@@ -3,6 +3,9 @@ import {
   getAllcodeServices,
   editUser,
   getTopDoctorHomeService,
+  getAllDoctors,
+  saveDetailDoctor,
+  getDetailDoctorService,
 } from '../../services/userServices';
 // export const fetchGenderStart = () => ({
 //   type: actionTypes.FETCH_GENDER_START,
@@ -189,8 +192,8 @@ export const editUserFailed = () => ({
 export const fetchTopDoctors = () => {
   return async (dispatch, getState) => {
     try {
-      let res = await getTopDoctorHomeService('8');
-      console.log('check data form', res);
+      let res = await getTopDoctorHomeService(8);
+
       if (res && res.errCode === 0) {
         dispatch({
           type: 'FETCH_TOP_DOCTOR_SUCCESS',
@@ -205,6 +208,169 @@ export const fetchTopDoctors = () => {
       console.log('Failed from redux');
       dispatch({
         type: 'FETCH_TOP_DOCTOR_FAILED',
+      });
+    }
+  };
+};
+export const fetchAllDoctors = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllDoctors();
+      console.log('check data form all doctors', res);
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: 'FETCH_ALL_DOCTOR_SUCCESS',
+          data: res.data,
+        });
+      } else {
+        dispatch({
+          type: 'FETCH_ALL_DOCTOR_FAILED',
+        });
+      }
+    } catch (error) {
+      console.log('Failed from redux');
+      dispatch({
+        type: 'FETCH_ALL_DOCTOR_FAILED',
+      });
+    }
+  };
+};
+export const saveDetailDoctorInfor = (dataDoctor) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await saveDetailDoctor(dataDoctor);
+      console.log('check save user', res);
+      if (res && res.errCode === 0) {
+        toast.success('save detail doctor success');
+        dispatch({
+          type: 'SAVE_DETAIL_DOCTOR_SUCCESS',
+        });
+      } else {
+        toast.error('save detail doctor failed');
+        dispatch({
+          type: 'SAVE_DETAIL_DOCTOR_FAILED',
+        });
+      }
+    } catch (error) {
+      console.log('Failed from redux');
+      toast.error('save detail doctor failed');
+      dispatch({
+        type: 'SAVE_DETAIL_DOCTOR_FAILED',
+      });
+    }
+  };
+};
+export const fetchDetailDoctor = (idDoctor) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getDetailDoctorService(idDoctor);
+
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: 'FETCH_DETAIL_DOCTOR_SUCCESS',
+          data: res.data,
+        });
+      } else {
+        dispatch({
+          type: 'FETCH_DETAIL_DOCTOR_FAILED',
+        });
+      }
+    } catch (error) {
+      console.log('Failed from redux');
+      dispatch({
+        type: 'FETCH_DETAIL_DOCTOR_FAILED',
+      });
+    }
+  };
+};
+export const fetchTimeSchedule = (inputType) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllcodeServices(inputType);
+
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: 'FETCH_TIME_SCHEDULE_SUCCESS',
+          data: res.data,
+        });
+      } else {
+        dispatch({
+          type: 'FETCH_TIME_SCHEDULE_FAILED',
+        });
+      }
+    } catch (error) {
+      console.log('Failed from redux');
+      dispatch({
+        type: 'FETCH_TIME_SCHEDULE_FAILED',
+      });
+    }
+  };
+};
+export const fetchPrice = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllcodeServices('PRICE');
+
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: 'FETCH_PRICE_SUCCESS',
+          data: res.data,
+        });
+      } else {
+        dispatch({
+          type: 'FETCH_PRICE_FAILED',
+        });
+      }
+    } catch (error) {
+      console.log('Failed from redux');
+      dispatch({
+        type: 'FETCH_PRICE_FAILED',
+      });
+    }
+  };
+};
+export const fetchProvince = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllcodeServices('PROVINCE');
+
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: 'FETCH_PROVINCE_SUCCESS',
+          data: res.data,
+        });
+      } else {
+        dispatch({
+          type: 'FETCH_PROVINCE_FAILED',
+        });
+      }
+    } catch (error) {
+      console.log('Failed from redux');
+      dispatch({
+        type: 'FETCH_PROVINCE_FAILED',
+      });
+    }
+  };
+};
+export const fetchPayment = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllcodeServices('PAYMENT');
+
+      if (res && res.errCode === 0) {
+        dispatch({
+          type: 'FETCH_PAYMENT_SUCCESS',
+          data: res.data,
+        });
+      } else {
+        dispatch({
+          type: 'FETCH_PAYMENT_FAILED',
+        });
+      }
+    } catch (error) {
+      console.log('Failed from redux');
+      dispatch({
+        type: 'FETCH_PAYMENT_FAILED',
       });
     }
   };

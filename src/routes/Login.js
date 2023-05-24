@@ -94,7 +94,12 @@ class Login extends Component {
       return;
     };
   }
+  handleToEnter = (e) => {
+    if(e.key="ENTER")
+    {
 
+    }
+  };
   render() {
     const { username, password, loginError } = this.state;
     const { lang } = this.props;
@@ -135,6 +140,7 @@ class Login extends Component {
                 className="form-control"
                 value={password}
                 onChange={this.onPasswordChange}
+                
               />
             </div>
 

@@ -64,6 +64,11 @@ class Login extends Component {
   handleForgotPassword = () => {
     alert('forgot password');
   };
+  handleToEnter = (e) => {
+    if ((e.key = 'Enter')) {
+      this.handleOnclickSubmit();
+    }
+  };
 
   render() {
     // const { username, password, loginError } = this.state;
@@ -93,6 +98,7 @@ class Login extends Component {
               onChange={(e) => {
                 this.handleOnchangPassword(e);
               }}
+              onKeyDown={(e) => this.handleToEnter(e)}
             />
 
             <i

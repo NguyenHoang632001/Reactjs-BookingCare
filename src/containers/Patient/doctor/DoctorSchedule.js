@@ -5,6 +5,8 @@ import './DoctorSchedule.scss';
 import moment from 'moment';
 import { LANGUAGES } from '../../../utils';
 import {
+  bookingAppoitment,
+  getAllcodeServices,
   getExtraDoctorById,
   getScheduleByDateService,
   getScheduleForUserService,
@@ -12,6 +14,8 @@ import {
 import { toast } from 'react-toastify';
 import './DoctorSchedule.scss';
 import BookingModal from './Modal/BookingModal';
+import DoctorInfor from './doctorInfor';
+import DatePicker from '../../../components/Input/DatePicker';
 // import localization from 'moment/local/vi';
 const handleImage = (imgBuffer) => {
   return new Buffer(imgBuffer, 'base64').toString('binary');
@@ -31,11 +35,25 @@ class DoctorSchedule extends Component {
       ExtraDoctor: [],
       timeType: '',
       dateToTimeStamp: '',
+      bookingScheduleForUser: '',
+      aboutTimeSchedule: '',
+      email: '',
+      phoneNumber: '',
+      address: '',
+      fullName: '',
+      reason: '',
+
+      currentDate: '',
+      sellectedGender: '',
+      arrGender: [],
     };
   }
 
   async componentDidMount() {
-    await this.props.fetchTimeSchedule('TIME');
+    this.props.fetchGenderStart();
+    this.setState({
+      arrGender: this.props.gender,
+    });
     await this.props.fetchTimeSchedule('TIME');
     let { language } = this.props;
 
@@ -59,10 +77,10 @@ class DoctorSchedule extends Component {
 
     var time = moment(arrDate[0].label, 'dddd-DD/MM');
     // Lấy timestamp
-
     var date = time.valueOf();
     this.setState({
       dateToTimeStamp: date,
+      sellectedDate: arrDate[0].label,
     });
     let doctorId = this.props.doctorId;
 
@@ -79,6 +97,11 @@ class DoctorSchedule extends Component {
     }
   }
   async componentDidUpdate(prevprops, prevState, snapshot) {
+    // if (this.props.gender !== this.state.arrGender) {
+    //   this.setState({
+    //     sellectedGender: this.props.gender[0].valueEn,
+    //   });
+    // }
     if (prevprops.language !== this.props.language) {
       let arrDate = [];
       for (let i = 0; i < 7; i++) {
@@ -171,6 +194,11 @@ class DoctorSchedule extends Component {
       }
     }
   }
+  handleToTakeGender = (e) => {
+    this.setState({
+      sellectedGender: e.target.value,
+    });
+  };
   handleToTakeData = async (e) => {
     this.setState({
       sellectedDate: e.target.value,
@@ -247,6 +275,7 @@ class DoctorSchedule extends Component {
   };
 
   handleToOpenBookingSchedule = async (itemTime) => {
+    this.setState({ aboutTimeSchedule: itemTime });
     this.setState({ isOpenModalBooking: !this.state.isOpenModalBooking });
 
     let timeType = this.getTimeType(itemTime);
@@ -259,11 +288,92 @@ class DoctorSchedule extends Component {
       timeType,
       this.state.dateToTimeStamp
     );
+    let timeUserChoose = await getAllcodeServices('TIME');
+    if (timeUserChoose && timeUserChoose?.data && data && data.data?.timeType) {
+      let timeDataType = '';
+      timeUserChoose.data.map((item) => {
+        if (item.keyMap === data.data.timeType) {
+          timeDataType = item;
+
+          return timeDataType;
+        }
+        return timeDataType;
+      });
+
+      let BookingSchedule = { ...data.data, timeDataType };
+      this.setState({
+        bookingScheduleForUser: BookingSchedule,
+      });
+    }
   };
 
+  handleChangeDate = (date) => {
+    this.setState({
+      currentDate: date[0].getTime(),
+    });
+  };
+  handleToTakeInforUser = (e, id) => {
+    let arrInfor = ['email', 'phoneNumber', 'address', 'fullName', 'reason'];
+    //
+    if (id === 'email') {
+      this.setState({
+        email: e.target.value,
+      });
+    }
+    if (id === 'phoneNumber') {
+      this.setState({
+        phoneNumber: e.target.value,
+      });
+    }
+    if (id === 'address') {
+      this.setState({
+        address: e.target.value,
+      });
+    }
+    if (id === 'fullName') {
+      this.setState({
+        fullName: e.target.value,
+      });
+    }
+    if (id === 'reason') {
+      this.setState({
+        reason: e.target.value,
+      });
+    }
+  };
+  handleToConfirmBook = async () => {
+    let {
+      doctorId,
+
+      fullName,
+      currentDate,
+      address,
+      email,
+      reason,
+      sellectedGender,
+      timeType,
+      dateToTimeStamp,
+      phoneNumber,
+    } = this.state;
+    let data = await bookingAppoitment({
+      doctorId,
+      fullName,
+      currentDate,
+      address,
+      email,
+      reason,
+      dateToTimeStamp,
+      phoneNumber,
+      sellectedGender,
+      timeType,
+    });
+    if (data && data.errCode === 0) {
+      console.log('data from booking', data);
+    }
+  };
   render() {
     let { arrTimeForDoctor } = this.state;
-
+    console.log('state schedule', this.state);
     return (
       <>
         <div className="container-schedule-doctor">
@@ -292,9 +402,10 @@ class DoctorSchedule extends Component {
               <div className="time-work">
                 {arrTimeForDoctor &&
                   arrTimeForDoctor.length > 0 &&
-                  arrTimeForDoctor.map((itemTime) => {
+                  arrTimeForDoctor.map((itemTime, index) => {
                     return (
                       <span
+                        key={index}
                         className="time-work-item"
                         onClick={() =>
                           this.handleToOpenBookingSchedule(itemTime)
@@ -314,54 +425,87 @@ class DoctorSchedule extends Component {
         <BookingModal
           isOpenModal={this.state.isOpenModalBooking}
           isStopModal={this.handleToStopModal}
+          handleToConfirmBook={this.handleToConfirmBook}
           className="from-ceate-new-user"
         >
           <div>
-            <span>Giá khám: </span>
-            {this.state.ExtraDoctor && this.props.language === 'en' ? (
-              <span className="price">
-                {' '}
-                {this.state.ExtraDoctor.priceTypeData?.valueEn &&
-                  this.state.ExtraDoctor.priceTypeData.valueEn}{' '}
-                $
-              </span>
-            ) : (
-              <span className="price">
-                {this.state.ExtraDoctor.priceTypeData?.valueVn &&
-                  this.fotmatFrice(
-                    +this.state.ExtraDoctor.priceTypeData.valueVn
-                  )}
-              </span>
-            )}
-            <div className="row">
+            <div>
+              <DoctorInfor
+                doctorId={this.state.doctorId}
+                aboutTime={this.state.aboutTimeSchedule}
+                selectDay={this.state.sellectedDate}
+              />
+            </div>
+
+            <div className="row p-2">
               <div className="col-6">
                 <label className="">Họ tên</label>
-                <input className="col-12"></input>
+                <input
+                  className="col-12"
+                  onChange={(e) => this.handleToTakeInforUser(e, 'fullName')}
+                  value={this.state.fullName}
+                ></input>
               </div>
               <div className="col-6">
                 <label className="">SỐ điện thoại</label>
-                <input className="col-12"></input>
+                <input
+                  className="col-12"
+                  onChange={(e) => this.handleToTakeInforUser(e, 'phoneNumber')}
+                  value={this.state.phoneNumber}
+                ></input>
               </div>
               <div className="col-6">
                 <label className="">Địa chỉ Email</label>
-                <input className="col-12"></input>
+                <input
+                  className="col-12"
+                  onChange={(e) => this.handleToTakeInforUser(e, 'email')}
+                  value={this.state.email}
+                ></input>
               </div>
               <div className="col-6">
                 <label className="">Dịa chỉ liên hệ</label>
-                <input className="col-12"></input>
+                <input
+                  className="col-12"
+                  onChange={(e) => this.handleToTakeInforUser(e, 'address')}
+                  value={this.state.address}
+                ></input>
               </div>
               <div className="col-12">
                 <label className="">Lí do khám bệnh</label>
-                <input className="col-12"></input>
+                <input
+                  className="col-12"
+                  onChange={(e) => this.handleToTakeInforUser(e, 'reason')}
+                  value={this.state.reason}
+                ></input>
               </div>
 
               <div className="col-6">
-                <label className="">Đặt cho ai</label>
-                <input className="col-12"></input>
+                <label className="">Ngày sinh</label>
+                <DatePicker
+                  onChange={this.handleChangeDate}
+                  value={this.state.currentDate}
+                  className="col-12"
+                />
               </div>
-              <div className="col-6">
+              <div className="col-6 container-gender">
                 <label className="">Giới tính</label>
-                <input className="col-12"></input>
+                <select
+                  selected="selected"
+                  onChange={(e) => this.handleToTakeGender(e)}
+                  className="col-12 box-gender"
+                >
+                  <option value="" selected disabled hidden>
+                    Choose here
+                  </option>
+                  {this.props.gender && this.props.gender.length > 0}
+                  {this.props.gender.map((item, index) => {
+                    return (
+                      <option key={index} className="col-12 item-gender">
+                        {item.valueEn}
+                      </option>
+                    );
+                  })}
+                </select>
               </div>
             </div>
           </div>
@@ -378,6 +522,7 @@ const mapStateToProps = (state) => {
     DoctorSchedule: state.admin.DoctorSchedule,
     language: state.app.language,
     allTimeSchedule: state.admin.allTimeSchedule,
+    gender: state.admin.gender,
   };
 };
 
@@ -385,6 +530,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getDetailDoctor: (id) => dispatch(actions.fetchDetailDoctor(id)),
     fetchTimeSchedule: (data) => dispatch(actions.fetchTimeSchedule(data)),
+    fetchGenderStart: () => dispatch(actions.fetchGenderStart()),
   };
 };
 

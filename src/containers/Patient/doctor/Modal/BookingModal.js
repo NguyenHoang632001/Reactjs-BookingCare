@@ -40,6 +40,7 @@ class BookingModal extends Component {
             <Button
               color="secondary"
               className="px-3 button-confirm"
+              onClick={() => this.props.handleToConfirmBook()}
               // onClick={() => this.toggle()}
             >
               xác nhận

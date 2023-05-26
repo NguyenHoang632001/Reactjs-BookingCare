@@ -59,6 +59,12 @@ const getScheduleForUserService = (timeType, date) => {
     `api/get-schedule-for-user?timeType=${timeType}&date=${date}`
   );
 };
+const getDoctorInfor = (doctorId) => {
+  return axios.get(`api/get-doctor-infor?doctorId=${doctorId}`);
+};
+const bookingAppoitment = (data) => {
+  return axios.post(`api/patient-book-appointments`, data);
+};
 export {
   handleLoginUser,
   getUser,
@@ -74,4 +80,6 @@ export {
   getScheduleByDateService,
   getExtraDoctorById,
   getScheduleForUserService,
+  getDoctorInfor,
+  bookingAppoitment,
 };

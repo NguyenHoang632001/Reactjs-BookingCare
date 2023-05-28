@@ -63,7 +63,10 @@ class DetailDoctor extends Component {
             )}
           </div>
           <div className="doctor-schedule">
-            <DoctorSchedule doctorId={this.state.detailDoctor.id} />
+            <DoctorSchedule
+              doctorId={this.state.detailDoctor.id}
+              detailDoctor={this.state.detailDoctor}
+            />
             {this.state.detailDoctor.id && (
               <DoctorExtrainFor doctorId={this.state.detailDoctor.id} />
             )}

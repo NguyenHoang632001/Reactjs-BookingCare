@@ -46,6 +46,9 @@ class DoctorSchedule extends Component {
       currentDate: '',
       sellectedGender: '',
       arrGender: [],
+      detailDoctor: '',
+      doctorFirstName: '',
+      doctorLastName: '',
     };
   }
 
@@ -53,6 +56,12 @@ class DoctorSchedule extends Component {
     this.props.fetchGenderStart();
     this.setState({
       arrGender: this.props.gender,
+    });
+
+    this.setState({
+      doctorFirstName: this.props.detailDoctor.firstName,
+      doctorLastName: this.props.detailDoctor.lastName,
+      doctorId: this.props.doctorId,
     });
     await this.props.fetchTimeSchedule('TIME');
     let { language } = this.props;
@@ -97,9 +106,10 @@ class DoctorSchedule extends Component {
     }
   }
   async componentDidUpdate(prevprops, prevState, snapshot) {
-    // if (this.props.gender !== this.state.arrGender) {
+    // if (this.props.detailDoctor !== prevprops.detailDoctor) {
     //   this.setState({
-    //     sellectedGender: this.props.gender[0].valueEn,
+    //     doctorFirstName: this.props.firstName,
+    //     doctorLastName: this.props.lastName,
     //   });
     // }
     if (prevprops.language !== this.props.language) {
@@ -354,7 +364,13 @@ class DoctorSchedule extends Component {
       timeType,
       dateToTimeStamp,
       phoneNumber,
+      aboutTimeSchedule,
+      sellectedDate,
+      doctorFirstName,
+      doctorLastName,
     } = this.state;
+    console.log('firstName', doctorId);
+    console.log('lastName', doctorLastName);
     let data = await bookingAppoitment({
       doctorId,
       fullName,
@@ -366,14 +382,20 @@ class DoctorSchedule extends Component {
       phoneNumber,
       sellectedGender,
       timeType,
+      aboutTimeSchedule,
+      sellectedDate,
+      doctorFirstName,
+      doctorLastName,
     });
     if (data && data.errCode === 0) {
-      console.log('data from booking', data);
+      toast.success('Booking Success!, check mail to confirm');
+    } else {
+      toast.error('Booking failed');
     }
   };
   render() {
     let { arrTimeForDoctor } = this.state;
-    console.log('state schedule', this.state);
+    console.log('detail doctor', this.props.detailDoctor);
     return (
       <>
         <div className="container-schedule-doctor">

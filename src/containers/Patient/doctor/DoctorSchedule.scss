@@ -1,69 +1,360 @@
-.container-schedule-doctor {
-  width: 50%;
+@media only screen and (max-width: 2280px) and (min-width: 1000px) {
+  .container-schedule-doctor {
+    width: 50%;
 
-  padding-left: 20px;
+    padding-left: 20px;
+    // background-color: red;
 
-  .container-select-time {
-    width: 30%;
-    min-height: 30px;
-    &:hover {
-      cursor: pointer;
-    }
-    .tag-sellect-box {
-      width: 100%;
-      height: 100%;
-      background-color: #eee;
-      border-radius: 2px;
-      padding: 4px 8px;
+    .container-select-time {
+      width: 40%;
+      min-height: 30px;
       &:hover {
         cursor: pointer;
       }
-      .option-select-item {
+      .tag-sellect-box {
+        width: 100%;
+        height: 100%;
+        background-color: #eee;
+        border-radius: 2px;
         padding: 4px 8px;
         &:hover {
           cursor: pointer;
+        }
+        .option-select-item {
+          padding: 4px 8px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .box-schdule-arr {
+      width: 100%;
+
+      .title-schedule {
+        font-size: 12px;
+        margin-top: 10px;
+
+        .title-icon {
+          font-size: 16px;
+          padding: 0 5px;
+        }
+        .title-calender {
+          font-size: 16px;
+          padding: 0 5px;
+        }
+      }
+      .time-work {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        /* justify-content: space-evenly; */
+
+        .time-work-item {
+          min-width: 165px;
+          padding: 4px 8px;
+          background-color: #eee;
+          border-radius: 5px;
+          padding: 4px 8px;
+          margin: 6px;
+          border: 1px solid #eee;
+          &:hover {
+            cursor: pointer;
+            background-color: rgba(255, 255, 0, 0.462);
+          }
         }
       }
     }
   }
-  .box-schdule-arr {
-    width: 100%;
-
-    .title-schedule {
-      font-size: 12px;
-      margin-top: 10px;
-
-      .title-icon {
-        font-size: 16px;
-        padding: 0 5px;
-      }
-      .title-calender {
-        font-size: 16px;
-        padding: 0 5px;
-      }
-    }
-    .time-work {
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      /* justify-content: space-evenly; */
-
-      .time-work-item {
-        min-width: 165px;
-        padding: 4px 8px;
-        background-color: #eee;
-        border-radius: 5px;
-        padding: 4px 8px;
-        margin: 6px;
-        border: 1px solid #eee;
-        &:hover {
-          cursor: pointer;
-          background-color: rgba(255, 255, 0, 0.462);
-        }
-      }
-    }
+  .box-gender {
+    height: 27px;
   }
 }
-.box-gender {
-  height: 27px;
+@media only screen and (max-width: 999px) and (min-width: 740px) {
+  .container-schedule-doctor {
+    width: 50%;
+
+    padding-left: 20px;
+    // background-color: red;
+
+    .container-select-time {
+      width: 50%;
+      min-height: 30px;
+      &:hover {
+        cursor: pointer;
+      }
+      .tag-sellect-box {
+        width: 100%;
+        height: 100%;
+        background-color: #eee;
+        border-radius: 2px;
+        padding: 4px 8px;
+        &:hover {
+          cursor: pointer;
+        }
+        .option-select-item {
+          padding: 4px 8px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .box-schdule-arr {
+      width: 100%;
+
+      .title-schedule {
+        font-size: 12px;
+        margin-top: 10px;
+
+        .title-icon {
+          font-size: 16px;
+          padding: 0 5px;
+        }
+        .title-calender {
+          font-size: 16px;
+          padding: 0 5px;
+        }
+      }
+      .time-work {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        /* justify-content: space-evenly; */
+
+        .time-work-item {
+          min-width: 165px;
+          padding: 4px 8px;
+          background-color: #eee;
+          border-radius: 5px;
+          padding: 4px 8px;
+          margin: 6px;
+          border: 1px solid #eee;
+          &:hover {
+            cursor: pointer;
+            background-color: rgba(255, 255, 0, 0.462);
+          }
+        }
+      }
+    }
+  }
+  .box-gender {
+    height: 27px;
+  }
+}
+@media only screen and (max-width: 739px) and (min-width: 630px) {
+  .container-schedule-doctor {
+    width: 50%;
+
+    padding-left: 20px;
+    // background-color: red;
+
+    .container-select-time {
+      width: 60%;
+      min-height: 30px;
+      &:hover {
+        cursor: pointer;
+      }
+      .tag-sellect-box {
+        width: 100%;
+        height: 100%;
+        background-color: #eee;
+        border-radius: 2px;
+        padding: 4px 8px;
+        &:hover {
+          cursor: pointer;
+        }
+        .option-select-item {
+          padding: 4px 8px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .box-schdule-arr {
+      width: 100%;
+
+      .title-schedule {
+        font-size: 12px;
+        margin-top: 10px;
+
+        .title-icon {
+          font-size: 16px;
+          padding: 0 5px;
+        }
+        .title-calender {
+          font-size: 16px;
+          padding: 0 5px;
+        }
+      }
+      .time-work {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        /* justify-content: space-evenly; */
+
+        .time-work-item {
+          min-width: 165px;
+          padding: 4px 8px;
+          background-color: #eee;
+          border-radius: 5px;
+          padding: 4px 8px;
+          margin: 6px;
+          border: 1px solid #eee;
+          &:hover {
+            cursor: pointer;
+            background-color: rgba(255, 255, 0, 0.462);
+          }
+        }
+      }
+    }
+  }
+  .box-gender {
+    height: 27px;
+  }
+}
+@media only screen and (max-width: 629px) and (min-width: 480px) {
+  .container-schedule-doctor {
+    width: 50%;
+
+    padding-left: 20px;
+    // background-color: red;
+
+    .container-select-time {
+      width: 80%;
+      min-height: 30px;
+      &:hover {
+        cursor: pointer;
+      }
+      .tag-sellect-box {
+        width: 100%;
+        height: 100%;
+        background-color: #eee;
+        border-radius: 2px;
+        padding: 4px 8px;
+        &:hover {
+          cursor: pointer;
+        }
+        .option-select-item {
+          padding: 4px 8px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .box-schdule-arr {
+      width: 100%;
+
+      .title-schedule {
+        font-size: 12px;
+        margin-top: 10px;
+
+        .title-icon {
+          font-size: 16px;
+          padding: 0 5px;
+        }
+        .title-calender {
+          font-size: 16px;
+          padding: 0 5px;
+        }
+      }
+      .time-work {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        /* justify-content: space-evenly; */
+
+        .time-work-item {
+          min-width: 165px;
+          padding: 4px 8px;
+          background-color: #eee;
+          border-radius: 5px;
+          padding: 4px 8px;
+          margin: 6px;
+          border: 1px solid #eee;
+          &:hover {
+            cursor: pointer;
+            background-color: rgba(255, 255, 0, 0.462);
+          }
+        }
+      }
+    }
+  }
+  .box-gender {
+    height: 27px;
+  }
+}
+@media only screen and (max-width: 479px) and (min-width: 0px) {
+  .container-schedule-doctor {
+    width: 50%;
+
+    padding-left: 20px;
+    // background-color: red;
+
+    .container-select-time {
+      width: 100%;
+      min-height: 30px;
+      &:hover {
+        cursor: pointer;
+      }
+      .tag-sellect-box {
+        width: 100%;
+        height: 100%;
+        background-color: #eee;
+        border-radius: 2px;
+        padding: 4px 8px;
+        &:hover {
+          cursor: pointer;
+        }
+        .option-select-item {
+          padding: 4px 8px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .box-schdule-arr {
+      width: 100%;
+
+      .title-schedule {
+        font-size: 12px;
+        margin-top: 10px;
+
+        .title-icon {
+          font-size: 16px;
+          padding: 0 5px;
+        }
+        .title-calender {
+          font-size: 16px;
+          padding: 0 5px;
+        }
+      }
+      .time-work {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        /* justify-content: space-evenly; */
+
+        .time-work-item {
+          min-width: 165px;
+          padding: 4px 8px;
+          background-color: #eee;
+          border-radius: 5px;
+          padding: 4px 8px;
+          margin: 6px;
+          border: 1px solid #eee;
+          &:hover {
+            cursor: pointer;
+            background-color: rgba(255, 255, 0, 0.462);
+          }
+        }
+      }
+    }
+  }
+  .box-gender {
+    height: 27px;
+  }
 }

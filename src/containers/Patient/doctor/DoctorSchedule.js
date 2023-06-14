@@ -57,12 +57,13 @@ class DoctorSchedule extends Component {
     this.setState({
       arrGender: this.props.gender,
     });
-
-    this.setState({
-      doctorFirstName: this.props.detailDoctor.firstName,
-      doctorLastName: this.props.detailDoctor.lastName,
-      doctorId: this.props.doctorId,
-    });
+    if (this.props.detailDoctor) {
+      this.setState({
+        doctorFirstName: this.props.detailDoctor.firstName,
+        doctorLastName: this.props.detailDoctor.lastName,
+        doctorId: this.props.doctorId,
+      });
+    }
     await this.props.fetchTimeSchedule('TIME');
     let { language } = this.props;
 
@@ -369,8 +370,7 @@ class DoctorSchedule extends Component {
       doctorFirstName,
       doctorLastName,
     } = this.state;
-    console.log('firstName', doctorId);
-    console.log('lastName', doctorLastName);
+
     let data = await bookingAppoitment({
       doctorId,
       fullName,
@@ -395,7 +395,7 @@ class DoctorSchedule extends Component {
   };
   render() {
     let { arrTimeForDoctor } = this.state;
-    console.log('detail doctor', this.props.detailDoctor);
+
     return (
       <>
         <div className="container-schedule-doctor">

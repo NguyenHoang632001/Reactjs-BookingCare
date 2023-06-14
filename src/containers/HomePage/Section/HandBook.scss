@@ -1,101 +1,309 @@
-.section-HandBook {
-  height: auto;
+@media only screen and (max-width: 2280px) and (min-width: 1000px) {
+  .section-HandBook {
+    height: auto;
 
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 
-  align-items: center;
+    align-items: center;
 
-  margin: 0 150px;
+    margin: 0 150px;
 
-  position: relative;
-  margin-top: 80px;
-  //   background-color: #eee;
+    position: relative;
+    margin-top: 80px;
+    //   background-color: #eee;
 
-  .title-HandBook {
-    position: absolute;
+    .title-HandBook {
+      position: absolute;
 
-    font-size: 1.5vw;
-    font-weight: 700;
-    top: -20%;
-    left: 0;
-  }
-  .see-more {
-    position: absolute;
+      font-size: 1.5vw;
+      font-weight: 700;
+      top: -20%;
+      left: 0;
+    }
+    .see-more {
+      position: absolute;
 
-    top: -20%;
-    right: 0;
+      top: -20%;
+      right: 0;
 
-    // background-color: #eee;
-  }
-  .HandBook-content {
-    height: 100%;
-    width: 100%;
+      // background-color: #eee;
+    }
+    .HandBook-content {
+      height: 100%;
+      width: 100%;
 
-    .item-img {
-      height: 150px;
+      .item-img {
+        height: 150px;
 
-      .container-item-img {
-        // border: 2px solid black;
-        border: 1px solid #eee;
-        width: 99%;
-        height: 100%;
-
-        display: flex !important;
-        // align-items: center;
-        // background-color: red;
-        border: 1px solid #eee;
-        flex-direction: row;
-        .img {
-          width: 50%;
+        .container-item-img {
+          // border: 2px solid black;
+          border: 1px solid #eee;
+          width: 99%;
           height: 100%;
-          object-fit: cover;
-        }
-        h3 {
-          width: 100%;
-          font-size: 18px;
-          font-weight: 600;
-          &:hover {
-            color: rgba(10, 119, 119, 0.867);
-            cursor: pointer;
+
+          display: flex !important;
+          // align-items: center;
+          // background-color: red;
+          border: 1px solid #eee;
+          flex-direction: row;
+          .img {
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+          }
+          h3 {
+            width: 100%;
+            font-size: 18px;
+            font-weight: 600;
+            &:hover {
+              color: rgba(10, 119, 119, 0.867);
+              cursor: pointer;
+            }
           }
         }
       }
     }
   }
-}
-.slick-prev {
-  z-index: 1000;
-  left: 0 !important;
+  .slick-prev {
+    z-index: 1000;
+    left: 0 !important;
 
-  transform: translate(-40%, -50%) !important;
-  ::before {
-    font-size: 20px !important;
+    transform: translate(-40%, -50%) !important;
+    ::before {
+      font-size: 20px !important;
+    }
   }
-}
-.slick-prev::before {
-  font-family: 'sdfaf' !important;
-  font-size: 24px !important;
-  //   content: '\e257' !important;
-  opacity: 1 !important;
-  color: rgb(81, 221, 240) !important;
-  padding: 2px;
-}
-.slick-next::before {
-  font-family: 'sdfaf' !important;
-  font-size: 24px !important;
-  //   content: '\e257' !important;
-  color: rgb(81, 221, 240) !important;
-}
-.slick-next {
-  right: 0 !important;
-  transform: translate(50%, -50%) !important;
-
-  ::before {
-    opacity: 1 !important;
+  .slick-prev::before {
     font-family: 'sdfaf' !important;
-    font-size: 45px !important;
+    font-size: 24px !important;
+    //   content: '\e257' !important;
+    opacity: 1 !important;
     color: rgb(81, 221, 240) !important;
     padding: 2px;
+  }
+  .slick-next::before {
+    font-family: 'sdfaf' !important;
+    font-size: 24px !important;
+    //   content: '\e257' !important;
+    color: rgb(81, 221, 240) !important;
+  }
+  .slick-next {
+    right: 0 !important;
+    transform: translate(50%, -50%) !important;
+
+    ::before {
+      opacity: 1 !important;
+      font-family: 'sdfaf' !important;
+      font-size: 45px !important;
+      color: rgb(81, 221, 240) !important;
+      padding: 2px;
+    }
+  }
+}
+@media only screen and (max-width: 999px) and (min-width: 56px) {
+  .section-HandBook {
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    margin: 0 20px;
+
+    position: relative;
+    margin-top: 80px;
+    //   background-color: #eee;
+
+    .title-HandBook {
+      position: absolute;
+
+      font-size: 1.7vw;
+      font-weight: 700;
+      top: -20%;
+      left: 0;
+    }
+    .see-more {
+      position: absolute;
+
+      top: -20%;
+      right: 0;
+
+      // background-color: #eee;
+    }
+    .HandBook-content {
+      height: 100%;
+      width: 100%;
+
+      .item-img {
+        height: 150px;
+
+        .container-item-img {
+          // border: 2px solid black;
+          border: 1px solid #eee;
+          width: 99%;
+          height: 100%;
+
+          display: flex !important;
+          // align-items: center;
+          // background-color: red;
+          border: 1px solid #eee;
+          flex-direction: row;
+          .img {
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+          }
+          h3 {
+            width: 100%;
+            font-size: 12px;
+            font-weight: 600;
+            &:hover {
+              color: rgba(10, 119, 119, 0.867);
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+  .slick-prev {
+    z-index: 1000;
+    left: 0 !important;
+
+    transform: translate(-40%, -50%) !important;
+    ::before {
+      font-size: 20px !important;
+    }
+  }
+  .slick-prev::before {
+    font-family: 'sdfaf' !important;
+    font-size: 24px !important;
+    //   content: '\e257' !important;
+    opacity: 1 !important;
+    color: rgb(81, 221, 240) !important;
+    padding: 2px;
+  }
+  .slick-next::before {
+    font-family: 'sdfaf' !important;
+    font-size: 24px !important;
+    //   content: '\e257' !important;
+    color: rgb(81, 221, 240) !important;
+  }
+  .slick-next {
+    right: 0 !important;
+    transform: translate(50%, -50%) !important;
+
+    ::before {
+      opacity: 1 !important;
+      font-family: 'sdfaf' !important;
+      font-size: 45px !important;
+      color: rgb(81, 221, 240) !important;
+      padding: 2px;
+    }
+  }
+}
+@media only screen and (max-width: 559px) and (min-width: 0px) {
+  .section-HandBook {
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    margin: 0 20px;
+
+    position: relative;
+    margin-top: 80px;
+    //   background-color: #eee;
+
+    .title-HandBook {
+      position: absolute;
+
+      font-size: 2.6vw;
+      font-weight: 700;
+      top: -20%;
+      left: 0;
+    }
+    .see-more {
+      position: absolute;
+
+      top: -20%;
+      right: 0;
+      font-size: 10px;
+      // background-color: #eee;
+    }
+    .HandBook-content {
+      height: 100%;
+      width: 100%;
+
+      .item-img {
+        height: 150px;
+
+        .container-item-img {
+          // border: 2px solid black;
+          border: 1px solid #eee;
+          width: 99%;
+          height: 80%;
+
+          display: flex !important;
+          // align-items: center;
+          // background-color: red;
+          border: 1px solid #eee;
+          flex-direction: row;
+          .img {
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+          }
+          h3 {
+            width: 100%;
+            font-size: 10px;
+            font-weight: 600;
+            &:hover {
+              color: rgba(10, 119, 119, 0.867);
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+  .slick-prev {
+    z-index: 1000;
+    left: 0 !important;
+
+    transform: translate(-40%, -50%) !important;
+    ::before {
+      font-size: 20px !important;
+    }
+  }
+  .slick-prev::before {
+    font-family: 'sdfaf' !important;
+    font-size: 24px !important;
+    //   content: '\e257' !important;
+    opacity: 1 !important;
+    color: rgb(81, 221, 240) !important;
+    padding: 2px;
+  }
+  .slick-next::before {
+    font-family: 'sdfaf' !important;
+    font-size: 24px !important;
+    //   content: '\e257' !important;
+    color: rgb(81, 221, 240) !important;
+  }
+  .slick-next {
+    right: 0 !important;
+    transform: translate(50%, -50%) !important;
+
+    ::before {
+      opacity: 1 !important;
+      font-family: 'sdfaf' !important;
+      font-size: 45px !important;
+      color: rgb(81, 221, 240) !important;
+      padding: 2px;
+    }
   }
 }

@@ -79,18 +79,36 @@ class OutstandingDoctor extends Component {
     // this.props.getDetailDoctor(id);
     this.props.history.push(`/detail-doctor/${id}`);
   };
+  removeDuplicates(arr) {
+    let uniqueArray = [];
+    let idSet = new Set();
+
+    // Duyệt qua từng phần tử trong mảng
+    for (let i = 0; i < arr.length; i++) {
+      let currentObj = arr[i];
+
+      // Kiểm tra xem id đã tồn tại trong Set chưa
+      if (!idSet.has(currentObj.id)) {
+        idSet.add(currentObj.id);
+        uniqueArray.push(currentObj);
+      }
+    }
+
+    return uniqueArray;
+  }
   render() {
     let settings = {
       dots: false,
       infinite: false,
       speed: 500,
-      slidesToShow: 5,
+      slidesToShow: 4,
       slidesToScroll: 2,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
     };
     let language = this.props.language;
-    console.log('top doctr', this.props.topDoctors);
+    console.log(this.props.topDoctors);
+    console.log('after', this.removeDuplicates(this.props.topDoctors));
     return (
       <div className="section-OutstandingDoctor">
         <h2 className="title-OutstandingDoctor">
@@ -103,7 +121,7 @@ class OutstandingDoctor extends Component {
           <Slider {...settings}>
             {this.state.arrDoctor &&
               this.state.arrDoctor.length > 0 &&
-              this.props.topDoctors.map((item) => {
+              this.removeDuplicates(this.props.topDoctors).map((item) => {
                 let imageBase64 = '';
                 if (item.image) {
                   imageBase64 = new Buffer(item.image, 'base64').toString(

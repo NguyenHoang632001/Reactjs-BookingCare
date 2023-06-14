@@ -6,6 +6,7 @@ import './DetailDoctor.scss';
 import DoctorSchedule from './DoctorSchedule';
 import DoctorExtrainFor from './doctorExtrainFor';
 import BookingModal from './Modal/BookingModal';
+import Footer from '../../Footer/Footer';
 const handleImage = (imgBuffer) => {
   return new Buffer(imgBuffer, 'base64').toString('binary');
 };
@@ -39,7 +40,7 @@ class DetailDoctor extends Component {
         <HomeHeader isShowBanner={false} />
         <div className="container-detail-doctor">
           <div className="box-title">
-            {this.state.detailDoctor.image && (
+            {this.state.detailDoctor?.image && (
               <div
                 className="box-img-doctor"
                 style={{
@@ -62,19 +63,25 @@ class DetailDoctor extends Component {
               </div>
             )}
           </div>
-          <div className="doctor-schedule">
-            <DoctorSchedule
-              doctorId={this.state.detailDoctor.id}
-              detailDoctor={this.state.detailDoctor}
-            />
-            {this.state.detailDoctor.id && (
-              <DoctorExtrainFor doctorId={this.state.detailDoctor.id} />
-            )}
-          </div>
+          {this.state.detailDoctor && this.state.detailDoctor.id ? (
+            <div className="doctor-schedule">
+              <DoctorSchedule
+                doctorId={this.state.detailDoctor.id}
+                detailDoctor={this.state.detailDoctor}
+              />
+              {this.state.detailDoctor.id && (
+                <DoctorExtrainFor doctorId={this.state.detailDoctor.id} />
+              )}
+            </div>
+          ) : (
+            <div></div>
+          )}
+
           <div className="markdown">
             <div dangerouslySetInnerHTML={{ __html: contentMarkdown }} />
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

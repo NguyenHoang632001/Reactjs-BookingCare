@@ -28,16 +28,25 @@ class doctorExtrainFor extends Component {
     this.props.fetchDetailDoctor(this.props.doctorId);
 
     if (this.props.language === 'en') {
-      this.setState({
-        priceSelected:
-          this.props.detailDoctor.Doctor_Infor.priceTypeData.valueEn,
-      });
+      if (this.props.detailDoctor && this.props.detailDoctor.Doctor_Infor) {
+        this.setState({
+          priceSelected:
+            this.props.detailDoctor.Doctor_Infor.priceTypeData.valueEn,
+        });
+      }
     }
+
     if (this.props.language === 'vi') {
-      this.setState({
-        priceSelected:
-          this.props.detailDoctor.Doctor_Infor.priceTypeData.valueVn,
-      });
+      if (
+        this.props.detailDoctor &&
+        this.props.detailDoctor.Doctor_Infor &&
+        this.props.detailDoctor.Doctor_Infor.valueVn
+      ) {
+        this.setState({
+          priceSelected:
+            this.props.detailDoctor.Doctor_Infor.priceTypeData.valueVn,
+        });
+      }
     }
     let data = await getExtraDoctorById(this.props.doctorId);
     if (data && data.errCode === 0) {

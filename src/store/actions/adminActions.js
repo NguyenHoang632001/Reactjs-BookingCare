@@ -216,7 +216,7 @@ export const fetchAllDoctors = () => {
   return async (dispatch, getState) => {
     try {
       let res = await getAllDoctors();
-      console.log('check data form all doctors', res);
+
       if (res && res.errCode === 0) {
         dispatch({
           type: 'FETCH_ALL_DOCTOR_SUCCESS',

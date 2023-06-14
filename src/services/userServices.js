@@ -71,6 +71,15 @@ const verifyBooking = (data) => {
 const createNewSpecialty = (data) => {
   return axios.post(`api/create-new-specialty`, data);
 };
+const getAllSpecialty = () => {
+  return axios.get(`api/get-all-specialty`);
+};
+const getDoctorInforInSpecialty = (id) => {
+  return axios.get(`api/get-doctor-specialty?id=${id}`);
+};
+const getContentSpecialty = (id) => {
+  return axios.get(`api/get-content-specialty?id=${id}`);
+};
 export {
   handleLoginUser,
   getUser,
@@ -90,4 +99,7 @@ export {
   bookingAppoitment,
   verifyBooking,
   createNewSpecialty,
+  getAllSpecialty,
+  getDoctorInforInSpecialty,
+  getContentSpecialty,
 };

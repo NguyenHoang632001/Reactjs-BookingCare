@@ -70,7 +70,6 @@ class HomeHeader extends Component {
             <div className="right-content">
               {/* <FontAwesomeIcon icon="fa-regular fa-circle-question" /> */}
               <div>
-                <i className="fa fa-question right-content-question"></i>
                 <span className="right-content-title">
                   {' '}
                   <FormattedMessage id="home-header.Help" />
@@ -106,9 +105,7 @@ class HomeHeader extends Component {
                 <i className="fa fa-search search-icon"></i>
                 <input
                   className="search-input-banner"
-                  placeholder={
-                    <FormattedMessage id="home-header.Find a general health check-up package" />
-                  }
+                  placeholder={'Tìm kiếm tại đây'}
                 ></input>
               </div>
             </div>

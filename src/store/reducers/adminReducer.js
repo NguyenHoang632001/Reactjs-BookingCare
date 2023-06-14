@@ -102,7 +102,7 @@ const adminReducer = (state = initialState, action) => {
       };
     case actionTypes.FETCH_ALL_DOCTOR_SUCCESS:
       state.allDoctors = action.data;
-      console.log('action for all doctors', state);
+
       return {
         ...state,
       };

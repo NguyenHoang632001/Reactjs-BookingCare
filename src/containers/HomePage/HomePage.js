@@ -7,6 +7,7 @@ import MedicalFacility from './Section/MedicalFacility';
 import OutstandingDoctor from './Section/OutstandingDoctor';
 import HandBook from './Section/HandBook';
 import About from './Section/About';
+import Footer from '../Footer/Footer';
 class HomePage extends Component {
   render() {
     return (
@@ -18,7 +19,8 @@ class HomePage extends Component {
         <OutstandingDoctor />
         <HandBook />
         <About />
-        <div style={{ height: '100px' }}></div>
+
+        <Footer></Footer>
       </div>
     );
   }

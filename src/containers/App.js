@@ -18,12 +18,12 @@ import Login from './Auth/Login';
 
 import System from '../routes/System';
 
-import { CustomToastCloseButton } from '../components/CustomToast';
 import ConfirmModal from '../components/ConfirmModal';
 import HomePage from './HomePage/HomePage';
 import CustomScrollbars from '../components/CustomScrollbars';
 import ManageDoctor from './System/Doctor/ManageSchedule';
 import VerifyBooking from './Patient/VerifyBooking';
+import DetailSpecialty from './Patient/specialty/DetailSpecialty';
 class App extends Component {
   handlePersistorState = () => {
     const { persistor } = this.props;
@@ -70,23 +70,14 @@ class App extends Component {
                   />
                   <Route path={path.HOMEPAGE} component={HomePage} />
                   <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
+                  <Route
+                    path={path.DETAIL_SPECIALTY}
+                    component={DetailSpecialty}
+                  />
                   <Route path={path.VARIFY_BOOKING} component={VerifyBooking} />
                 </Switch>
               </CustomScrollbars>
             </div>
-
-            {/* <ToastContainer
-              className="toast-container"
-              toastClassName="toast-item"
-              bodyClassName="toast-item-body"
-              autoClose={false}
-              hideProgressBar={true}
-              pauseOnHover={false}
-              pauseOnFocusLoss={true}
-              closeOnClick={false}
-              draggable={false}
-              closeButton={<CustomToastCloseButton />}
-            /> */}
             <ToastContainer
               position="top-right"
               autoClose={5000}

@@ -10,6 +10,7 @@ import MdEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
 import './ManageDoctor.scss';
 import Select from 'react-select';
+import { getAllSpecialty } from '../../../services/userServices';
 // Register plugins if required
 // MdEditor.use(YOUR_PLUGINS_HERE);
 
@@ -25,6 +26,7 @@ class ManageDoctor extends Component {
       contentMarkdown: '',
       contnetHTML: '',
       doctorOptions: [],
+      specialtyOptions: [],
       discriptionDoctor: '',
       selectedProvince: '',
       selectedPayment: '',
@@ -33,6 +35,7 @@ class ManageDoctor extends Component {
       note: '',
       addressClinic: '',
       detailDoctor: '',
+      selectedSpecialty: '',
     };
   }
 
@@ -41,6 +44,12 @@ class ManageDoctor extends Component {
     this.props.fetchPrice();
     this.props.fetchProvince();
     this.props.fetchPayment();
+    let data = await getAllSpecialty();
+    if (data && data.errCode === 0) {
+      this.setState({
+        specialtyOptions: this.builtDataSelectOptionSpecialty(data.data),
+      });
+    }
   }
   componentDidUpdate(prevprops, prevState, snapshot) {
     if (prevprops.doctors !== this.props.doctors) {
@@ -57,6 +66,7 @@ class ManageDoctor extends Component {
         this.props.detailDoctor.Doctor_Infor.priceTypeData &&
         this.props.detailDoctor.Doctor_Infor.provinceTypeData &&
         this.props.detailDoctor.Doctor_Infor.paymentTypeData
+        // this.props.detailDoctor.Doctor_Infor.paymentTypeData
       ) {
         this.setState({
           discriptionDoctor: this.props.detailDoctor.Markdown.description,
@@ -84,6 +94,9 @@ class ManageDoctor extends Component {
                 this.props.detailDoctor.Doctor_Infor.paymentTypeData.valueEn,
               value: this.props.detailDoctor.Doctor_Infor.priceId,
             },
+            selectedSpecialty: {
+              label: this.props.detailDoctor.Doctor_Infor.specialtyId,
+            },
           });
         }
         if (this.props.language === 'vi') {
@@ -104,6 +117,9 @@ class ManageDoctor extends Component {
                 this.props.detailDoctor.Doctor_Infor.paymentTypeData.valueVn,
               value: this.props.detailDoctor.Doctor_Infor.priceId,
             },
+            selectedSpecialty: {
+              label: this.props.detailDoctor.Doctor_Infor.specialtyId,
+            },
           });
         }
       } else {
@@ -116,6 +132,7 @@ class ManageDoctor extends Component {
           selectedPrice: '',
           selectedPayment: '',
           selectedProvince: '',
+          selectedSpecialty: '',
         });
       }
     }
@@ -206,6 +223,7 @@ class ManageDoctor extends Component {
       nameClinic: this.state.nameClinic,
       note: this.state.note,
       addressClinic: this.state.addressClinic,
+      selectedSpecialty: this.state.selectedSpecialty.value,
     });
   };
   handleChange = (selectedDoctor) => {
@@ -269,8 +287,21 @@ class ManageDoctor extends Component {
       return arrSelect;
     }
   };
+  builtDataSelectOptionSpecialty = (arr) => {
+    let arrSpecialty = [];
+    if (arr && arr.length > 0) {
+      arr.map((item) => {
+        let object = {};
+        object.label = item.name;
+        object.value = item.id;
+        arrSpecialty.push(object);
+        return arrSpecialty;
+      });
+    }
+    return arrSpecialty;
+  };
   handleChangeInput = (e, id) => {
-    let arrObject = ['price', 'payment', 'province'];
+    let arrObject = ['price', 'payment', 'province', 'specialty'];
     arrObject.map((item) => {
       if (id === 'price') {
         this.setState({
@@ -285,6 +316,11 @@ class ManageDoctor extends Component {
       if (id === 'province') {
         this.setState({
           selectedProvince: e,
+        });
+      }
+      if (id === 'specialty') {
+        this.setState({
+          selectedSpecialty: e,
         });
       }
       return;
@@ -303,9 +339,24 @@ class ManageDoctor extends Component {
       this.setState({ note: e.target.value });
     }
   };
+  removeDuplicates(arr) {
+    let uniqueArray = [];
+    let idSet = new Set();
 
+    // Duyệt qua từng phần tử trong mảng
+    for (let i = 0; i < arr.length; i++) {
+      let currentObj = arr[i];
+
+      // Kiểm tra xem id đã tồn tại trong Set chưa
+      if (!idSet.has(currentObj.id)) {
+        idSet.add(currentObj.id);
+        uniqueArray.push(currentObj);
+      }
+    }
+
+    return uniqueArray;
+  }
   render() {
-    console.log('detial doctor', this.props.detailDoctor);
     return (
       <>
         <div className="containerManageDoctor">
@@ -382,6 +433,23 @@ class ManageDoctor extends Component {
             </div>
             <div className="col-4">
               <label className="">Note</label>
+              <input
+                className="col-12"
+                value={this.state.note}
+                onChange={(e) => this.handleToChangText(e, 'note')}
+              ></input>
+            </div>
+            <div className="col-4">
+              <label className="">Chọn chuyên khoa</label>
+              <Select
+                value={this.state.selectedSpecialty}
+                onChange={(e) => this.handleChangeInput(e, 'specialty')}
+                options={this.state.specialtyOptions}
+                className="col-12"
+              />
+            </div>
+            <div className="col-4">
+              <label className="">Chọn phòng khám</label>
               <input
                 className="col-12"
                 value={this.state.note}
